@@ -1,7 +1,19 @@
-let todoItems: { id: number; title: string; done: boolean }[];
+// type Todo = {
+//   id: number;
+//   title: string;
+//   done: boolean;
+// }; // 타입별칭
+
+interface Todo {
+  id: number;
+  title: string;
+  done: boolean;
+} // ts의 핵심인 인터페이스
+
+let todoItems: Todo[];
 
 // api
-function fetchTodoItems(): { id: number; title: string; done: boolean }[] {
+function fetchTodoItems(): Todo[] {
   const todos = [
     { id: 1, title: '안녕', done: false },
     { id: 2, title: '타입', done: false },
@@ -16,7 +28,7 @@ function fetchTodos(): object[] {
   return todos;
 }
 
-function addTodo(todo: { id: number; title: string; done: boolean }): void {
+function addTodo(todo: Todo): void {
   todoItems.push(todo);
 }
 
@@ -24,10 +36,7 @@ function deleteTodo(index: number): void {
   todoItems.splice(index, 1);
 }
 
-function completeTodo(
-  index: number,
-  todo: { id: number; title: string; done: boolean }
-): void {
+function completeTodo(index: number, todo: Todo): void {
   todo.done = true; // 이 부분이 중요. todo 안에 done을 정의해줘야 빨간줄 표시가 되지 않는다.
   todoItems.splice(index, 1, todo);
 }
@@ -37,7 +46,7 @@ function logFirstTodo(): object {
   return todoItems[0];
 }
 
-function showCompleted(): object[] {
+function showCompleted(): Todo[] {
   return todoItems.filter(item => item.done);
 }
 
