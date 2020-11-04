@@ -6,10 +6,28 @@ function logMessage(value: string | number){
     if(typeof value === 'string'){
         value.toString();
     }
-    throw new TypeError('value must be string or number'); // 에러 발생
+    throw new TypeError('value must be string or number'); // 에러 발생 시킴
 }
 
 logMessage('hello');
 logMessage(100);
 
 // 타입 가드: 특정 타입으로 타입의 범위를 좁혀나가는(필터링 하는) 과정
+
+// Union Type의 특징
+interface Developer {
+    name: string;
+    skil: string;
+}
+
+interface Person {
+    name: string;
+    age: number;
+}
+
+function askSomeone(someone: Developer | Person){
+    // Developer도 되고 Person도 되어야 되기 때문에 공집합에 해당하는 속성만 적용된다.
+    someone.name
+    someone.age
+    someone.skil
+}
