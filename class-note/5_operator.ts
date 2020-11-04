@@ -31,3 +31,14 @@ function askSomeone(someone: Developer | Person){
     someone.age
     someone.skil
 }
+
+// intersection Type - '&'
+var dng: string | number | boolean;
+var capt: string & number & boolean;
+
+function askSomeone2(someone: Developer & Person){
+    // Developer 와 Person의 합집합에 해당하는 속성들이 적용된다.
+    someone.name
+    someone.age
+    someone.skil
+}
