@@ -55,4 +55,18 @@ var obj: StringRegexDictionary = {
 
 Object.keys(obj).forEach(function(value){}) // value값을 추론해준다.
 
-obj['sth'] = 'a'
+obj['sth'] = 'a' // RegExp 형태가 아니기 때문에 빨간 줄 표시
+
+// 인터페이스 확장
+interface Person {
+    name: string;
+    age: number;
+}
+
+interface Developer extends Person{
+    language: string;
+}
+
+var kdw: Developer = { //  name, age가 없기 때문에 에ㄹ
+    language: 'ts', 
+}
