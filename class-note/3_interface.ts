@@ -42,4 +42,17 @@ interface StringArray {
 
 var arr: StringArray = ['a', 'b', 'c'];
 arr[0] // 'a' 
-arr[0] = 10 
+arr[0] = 10 // string값이 아니기 때문에 빨간 줄 표시
+
+// 인터페이스 딕셔너리 패턴
+interface StringRegexDictionary {
+    [key: string]: RegExp // RegexExpression
+}
+
+var obj: StringRegexDictionary = {
+    sth: /abc/,
+}
+
+Object.keys(obj).forEach(function(value){}) // value값을 추론해준다.
+
+obj['sth'] = 'a'
