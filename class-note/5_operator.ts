@@ -46,7 +46,7 @@ function askSomeone2(someone: Developer3 & Person3){
     someone.skill
 }
 
-askSomeone2({ name: '디벨로퍼', skill: '웹 개발'});
-askSomeone2({ name: '캡틴', age: 100})
+askSomeone2({ name: '디벨로퍼', skill: '웹 개발'}); // age가 없어서 오류
+askSomeone2({ name: '캡틴', age: 100}) // skill이 없어서 오류
 askSomeone2({ name: '디벨로퍼', skill: '웹 개발', age: 100});
 
