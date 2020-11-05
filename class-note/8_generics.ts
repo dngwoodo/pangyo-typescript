@@ -99,3 +99,16 @@ function logTextLength<T extends LengthType>(text: T): T{
 logTextLength('a'); // a에는 length가 존재한다.
 logTextLength(10); // 10에는 length가 존재하지 않는다.
 logTextLength({ length: 10 });
+
+// 제네릭 타입 제한 3 - keyof
+interface ShoppingItem {
+    name: string;
+    price: number;
+    stock: number;
+}
+
+function getShoppingItemOption<T extends keyof ShoppingItem>(itemOption: T): T{ // 키 값만 들어가게 제한 시킨다.
+    return itemOption
+}
+
+getShoppingItemOption('name');
