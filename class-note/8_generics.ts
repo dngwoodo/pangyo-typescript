@@ -58,3 +58,22 @@ function logText<T>(text: T): T{
 const str = logText<string>('hi!') // <string>을 <T>에 대입하는것과 같다. 마우스를 올려보자.
 str.split('')
 const login = logText<boolean>(true);
+
+// 제네릭 정리
+// 함수를 정의할 때 타입을 비워둔 상태에서 호출할 때 타입을 정하는 것
+// 타입을 추론해서 최종 반환값까지 타입을 넣어줄 수 있는 것
+
+// 인터페이스에 제네릭 선언 방법
+// interface DropDown {
+//     value: string;
+//     selected: boolean;
+// }
+
+// const obj: DropDown = { value: 'abc', selected: false }
+
+interface DropDown<T> {
+    value: T;
+    selected: boolean
+}
+
+const obj: DropDown<string> = { value: 'abc', selected: false };
