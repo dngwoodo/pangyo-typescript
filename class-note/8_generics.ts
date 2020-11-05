@@ -77,3 +77,11 @@ interface DropDown<T> {
 }
 
 const obj: DropDown<string> = { value: 'abc', selected: false };
+
+// 제네릭의 타입 제한 - 타입에 대한 힌트를 조금 더 줄 수 있는 방법이다.
+function logTextLength<T>(text: T[]): T[] { 
+    console.log(text.length) // T만 주게 되면 빨간 줄이 뜨게 되는데 아직 타입을 모르기 때문이다. 그래서 힌트를 줄 수 있는데 T[] 이렇게 주게 된다.
+    return text;
+}
+
+logTextLength<string>('hi'); // 하지만 여기서 꼬이게 된다. 문자열도 들어가도 무방한데 hi에 빨간 줄 표시. 이건 어쩔 수 없는 듯 하다.
