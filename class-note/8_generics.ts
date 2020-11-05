@@ -16,22 +16,32 @@
 
 
 // 제네릭을 사용하지 않으면 이렇게 중복코드를 적게 된다.
-function logText(text: string){
+// function logText(text: string){
+//     console.log(text);
+//     text.split('').reverse().join('');
+//     return Text;
+// }
+
+// function logNumber(num: number){
+//     console.log(num);
+//     return num;
+// }
+
+// logText('a');
+// logText(10);
+// const num = logNumber(10);
+// logText(true);
+
+// logText('a');
+// logText(10);
+// logText(true);
+
+// 제네릭을 사용하지 않았을 경우 하드코딩을 피하는 방법 - 유니온 사용
+function logText(text: string | number){
     console.log(text);
-    text.split('').reverse().join('');
-    return Text;
-}
-
-function logNumber(num: number){
-    console.log(num);
-    return num;
+    text.split(''); // number도 들어갈 수 있기 때문에 유니온을 써도 여전히 오류 발생
+    return text;
 }
 
 logText('a');
 logText(10);
-const num = logNumber(10);
-logText(true);
-
-logText('a');
-logText(10);
-logText(true);
