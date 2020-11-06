@@ -10,17 +10,11 @@ interface Contact {
   phones: PhoneNumberDictionary;
 }
 
-enum PhoneTypes {
-  HOME = 'home',
-  OFFICE = 'office',
-  STUDIO = 'studio',
-}
-
 // api
 // TODO: 아래 함수의 반환 타입을 지정해보세요.
-function fetchContacts(): Promise<Contact[]> {
+function fetchContacts() {
   // TODO: 아래 변수의 타입을 지정해보세요.
-  const contacts: Contact[] = [
+  const contacts = [
     {
       name: 'Tony',
       address: 'Malibu',
@@ -62,42 +56,43 @@ function fetchContacts(): Promise<Contact[]> {
 
 // main
 class AddressBook {
-  contacts: Contact[] = [];
+  // TODO: 아래 변수의 타입을 지정해보세요.
+  contacts = [];
 
   constructor() {
     this.fetchData();
   }
 
-  fetchData(): void {
+  fetchData() {
     fetchContacts().then(response => {
       this.contacts = response;
     });
   }
 
   /* TODO: 아래 함수들의 파라미터 타입과 반환 타입을 지정해보세요 */
-  findContactByName(name: string): Contact[] {
+  findContactByName(name) {
     return this.contacts.filter(contact => contact.name === name);
   }
 
-  findContactByAddress(address: string): Contact[] {
+  findContactByAddress(address) {
     return this.contacts.filter(contact => contact.address === address);
   }
 
-  findContactByPhone(phoneNumber: number, phoneType: PhoneTypes): Contact[] {
-    return this.contacts.filter(contact => {
-      contact.phones[phoneType].num === phoneNumber;
-    });
+  findContactByPhone(phoneNumber, phoneType: string) {
+    return this.contacts.filter(
+      contact => contact.phones[phoneType].num === phoneNumber
+    );
   }
 
-  addContact(contact: Contact): void {
+  addContact(contact) {
     this.contacts.push(contact);
   }
 
-  displayListByName(): string[] {
+  displayListByName() {
     return this.contacts.map(contact => contact.name);
   }
 
-  displayListByAddress(): string[] {
+  displayListByAddress() {
     return this.contacts.map(contact => contact.address);
   }
   /* ------------------------------------------------ */
