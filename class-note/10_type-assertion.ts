@@ -4,3 +4,6 @@ var h = g // j = any, g = any
 var j = g as string; // h = string, g = any
 
 
+// DOM API 조작
+var div = document.querySelector('div') as HTMLDivElement
+div.innerText
