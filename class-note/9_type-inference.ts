@@ -40,3 +40,19 @@ var obj22: DropdownDetail<string> = {
 
 // Best Common Type
 var arr222 = [1,2,true, true, 'a']; // arr222에 마우스를 호버해보면 유니온타입을 사용하여 타입설정을 알아서 추론해준다. (string | number | boolean)[]
+
+// Context Typing(문맥상의 타이핑)
+window.onmousedown = function(mouseEvent) {
+    console.log(mouseEvent.button);   //<- OK
+    console.log(mouseEvent.kangaroo); //<- Error!
+};
+
+window.onscroll = function(uiEvent) {
+    console.log(uiEvent.button); //<- Error!
+}
+
+const handler = function(uiEvent) { // 앞의 변수만으로는 타입추론이 힘들기 때문에 uiEvent.button에서 에러가 나지 않는다.
+    console.log(uiEvent.button); //<- OK
+}
+
+// 위 코드에서 --noImplicitAny 옵션을 사용하면 에러 발생.
