@@ -30,3 +30,35 @@ class Person7 {
 
 var developer: Developer7;
 developer = new Person7() // 에러가 나지 않음.
+
+// 타입 호환 - 함수편
+var add2 = function(a:number){
+    //...
+}
+
+var sum2 = function(a:number, b: number ){
+    // ...
+}
+
+sum2 = add2;
+add2 = sum2;
+
+// 타입 호환 - 제네릭편
+interface Empty<T>{
+    //...
+}
+
+var empty1: Empty<string>;
+var empty2: Empty<number>;
+empty1 = empty2; // 에러 안남 <- 아직 Empty 인터페이스 구조에 아무것도 없기 때문이다. 
+empty2 = empty1; // 에러 안남 <- 아직 Empty 인터페이스 구조에 아무것도 없기 때문이다.
+
+interface NotEmpty<T>{
+    data: T;
+}
+
+var notempty1: NotEmpty<string>;
+var notempty2: NotEmpty<number>;
+notempty1 = notempty2; // 에러
+notempty2 = notempty1; // 에러
+
