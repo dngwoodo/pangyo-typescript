@@ -37,3 +37,6 @@ var obj22: DropdownDetail<string> = {
     title: '111',
     description: '222222'
 }
+
+// Best Common Type
+var arr222 = [1,2,true, true, 'a']; // arr222에 마우스를 호버해보면 유니온타입을 사용하여 타입설정을 알아서 추론해준다. (string | number | boolean)[]
