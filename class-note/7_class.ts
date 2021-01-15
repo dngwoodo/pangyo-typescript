@@ -1,11 +1,13 @@
-class Person10 {
+export {}
+class Person {
     private name: string; // 멤버 변수 - private는 밖에서 사용 불가, public는 어디서든 사용가능(default로 지정되어있음)
     public age: number;
-    readonly lohg : string; // 읽기만 가능
+    readonly long : string; // 읽기만 가능
 
-    constructor(name: string, age: number){
+    constructor(name: string, age: number, long: string){
         this.name = name; // 멤버 변수. 클래스 내  모든 곳에서 사용가능
         this.age = age;
+        this.long = long;
     }
 }
 

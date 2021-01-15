@@ -1,10 +1,11 @@
+export {}
 interface User {
     age: number;
     name: string;
 } // 동일한 규칙으로 사용하겠다고 상호간의 약속을 의미
 
 // 변수에 인터페이스 활용
-var seho: User = {
+const seho: User = {
     age: 33,
     name: '세호'
 }
@@ -28,7 +29,7 @@ interface SumFunction {
     (a: number, b: number): number;
 }
 
-var sum: SumFunction;
+let sum: SumFunction;
 
 sum = function(a:number, b: number): number{
     return a + b
@@ -40,22 +41,24 @@ interface StringArray {
     [index: number]: string
 }
 
-var arr: StringArray = ['a', 'b', 'c'];
+const arr: StringArray = ['a', 'b', 'c'];
 arr[0] // 'a' 
-arr[0] = 10 // string값이 아니기 때문에 빨간 줄 표시
+arr[0] = 10 // error, string값이 아니기 때문에 빨간 줄 표시
 
 // 인터페이스 딕셔너리 패턴
 interface StringRegexDictionary {
     [key: string]: RegExp // RegexExpression
 }
 
-var obj: StringRegexDictionary = {
+const obj: StringRegexDictionary = {
     sth: /abc/,
 }
 
-Object.keys(obj).forEach(function(value){}) // value값을 추론해준다.
+Object.keys(obj).forEach(function(value){ // sth를 의미
+    console.log(value)
+}) // value값을 추론해준다.
 
-obj['sth'] = 'a' // RegExp 형태가 아니기 때문에 빨간 줄 표시
+obj['sth'] = 'a' // error, RegExp 형태가 아니기 때문에 빨간 줄 표시
 
 // 인터페이스 확장
 interface Person {
@@ -67,6 +70,6 @@ interface Developer extends Person{
     language: string;
 }
 
-var kdw: Developer = { //  name, age가 없기 때문에 에ㄹ
+const kdw: Developer = { //  error, name, age가 없기 때문
     language: 'ts', 
 }

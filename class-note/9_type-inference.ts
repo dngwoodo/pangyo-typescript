@@ -1,9 +1,10 @@
+export {}
 // 타입 추론 기본 1
-var a = 10;
+const a = 10;
 
 function getA(b = 10) { // getA에 마우스 호버를 해보면 타입추론된 값이 나온다.
-    var c = 'hi';
-    return b + c;
+    const c = 'hi';
+    return b + c; // string
 }
 
 10 + '190' // 1010 <- 문자와 숫자를 더하면 문자로 나옴
@@ -15,7 +16,7 @@ interface Dropdown<T> {
     title: string;
 }
 
-var shoppingItem: Dropdown<string> = {
+const shoppingItem: Dropdown<string> = {
     value: 'abc',
     title: 'hello'
 }
@@ -30,7 +31,7 @@ interface DropdownDetail<K> extends Dropdown<K>{ // DropdownDetail에 제네릭 
     description: K;
 }
 
-var obj22: DropdownDetail<string> = {
+const obj22: DropdownDetail<string> = {
     // value, title, description 셋중 하나만 없어도 에러 뜸.
     // 타입도 추론해서 설정해줌.
     value: 'aa',
@@ -39,7 +40,7 @@ var obj22: DropdownDetail<string> = {
 }
 
 // Best Common Type
-var arr222 = [1,2,true, true, 'a']; // arr222에 마우스를 호버해보면 유니온타입을 사용하여 타입설정을 알아서 추론해준다. (string | number | boolean)[]
+const arr = [1,2,true, true, 'a']; // arr에 마우스를 호버해보면 유니온타입을 사용하여 타입설정을 알아서 추론해준다. (string | number | boolean)[]
 
 // Context Typing(문맥상의 타이핑)
 window.onmousedown = function(mouseEvent) {

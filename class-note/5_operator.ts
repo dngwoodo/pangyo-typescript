@@ -1,3 +1,4 @@
+export {}
 // Union Type - 하나이상의 타입을 사용할 수 있게 해준다.
 function logMessage(value: string | number){
     if(typeof value === 'number'){
@@ -15,38 +16,38 @@ logMessage(100);
 // 타입 가드: 특정 타입으로 타입의 범위를 좁혀나가는(필터링 하는) 과정
 
 // Union Type의 특징
-interface Developer3 {
+interface Developer {
     name: string;
     skill: string;
 }
 
-interface Person3 {
+interface Person {
     name: string;
     age: number;
 }
 
-function askSomeone(someone: Developer3 | Person3){
+function askSomeone(someone: Developer | Person){
     // Developer도 되고 Person도 되어야 되기 때문에 공집합에 해당하는 속성만 적용된다.
     someone.name
-    someone.age
-    someone.skill
+    someone.age // error
+    someone.skill // error
 }
 
 askSomeone({ name: '디벨로퍼', skill: '웹 개발'});
 askSomeone({ name: '캡틴', age: 100})
 
 // intersection Type - '&'
-var dng: string | number | boolean;
-var capt: string & number & boolean;
+// const dng: string | number | boolean;
+// const capt: string & number & boolean;
 
-function askSomeone2(someone: Developer3 & Person3){
+function askSomeone2(someone: Developer & Person){
     // Developer 와 Person의 합집합에 해당하는 속성들이 적용된다.
     someone.name
     someone.age
     someone.skill
 }
 
-askSomeone2({ name: '디벨로퍼', skill: '웹 개발'}); // age가 없어서 오류
-askSomeone2({ name: '캡틴', age: 100}) // skill이 없어서 오류
+askSomeone2({ name: '디벨로퍼', skill: '웹 개발'}); // error, age가 없어서 오류
+askSomeone2({ name: '캡틴', age: 100}) // error, skill이 없어서 오류
 askSomeone2({ name: '디벨로퍼', skill: '웹 개발', age: 100});
 

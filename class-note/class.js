@@ -5,7 +5,7 @@ function Person(name, age){
     this.age = age;
 }
 
-var kdw = new Person('동우', 30)
+const kdw = new Person('동우', 30)
 
 // ES2015 (ES6)
 class Person {
@@ -17,7 +17,7 @@ class Person {
     }
 }
 
-var kdw = new Person('동우', 30) // 인스턴스가 생성 되었습니다.
+const kdw = new Person('동우', 30) // 인스턴스가 생성 되었습니다.
 console.log(kdw) // Person {name: '동우', age: 30}
 
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain 참고

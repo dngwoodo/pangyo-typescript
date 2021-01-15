@@ -1,3 +1,4 @@
+export {}
 // function logText(text) {
 //     console.log(text);
 //     return text;
@@ -96,8 +97,8 @@ function logTextLength<T extends LengthType>(text: T): T{
     return text;
 }
 
-logTextLength('a'); // a에는 length가 존재한다.
-logTextLength(10); // 10에는 length가 존재하지 않는다.
+logTextLength('a'); // a에는 length가 존재한다. 문자열이기 때문
+logTextLength(10); // error, 10에는 length가 존재하지 않는다.
 logTextLength({ length: 10 });
 
 // 제네릭 타입 제한 3 - keyof
