@@ -13,6 +13,7 @@ function fetchProducts(): Promise<Product[]> { // return 값이 없으므로 잠
     // ..
 }
 
+// 1. Pick
 // Pick이라는 유틸리티 타입을 이용하여 ProductDetail이라는 인터페이스를 따로 만들지 않고 사용가능하다.
 // interface ProductDetail {
 //     id: number;
@@ -24,3 +25,7 @@ type ShoppingItem = Pick<Product, 'id' | 'name' | 'price'>
 function displayProductDetail(shoppingItem: ShoppingItem){
 
 }
+
+// 2. Omit
+// Pick이라는 반대이다. 적어준 프로퍼티를 제외한 것들을 사용한다.
+type ShoppingItem2 = Omit<Product, 'brand' | 'stock'>
