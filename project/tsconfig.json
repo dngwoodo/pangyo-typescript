@@ -1,9 +1,10 @@
 {
     "compilerOptions": {
-        "allowJs": true,
+        "allowJs": true, // 점진적으로 적용하기 위한 설정. js파일도 컴파일해줌
         "target": "ES5",
         "outDir": "./built",
-        "moduleResolution": "Node"
+        "moduleResolution": "Node",
+        "lib": ["ES2015", "DOM", "DOM.Iterable"]
     },
     "include": [
         "./src/**/*" 

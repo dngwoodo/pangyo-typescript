@@ -60,7 +60,7 @@ function initEvents() {
   rankList.addEventListener('click', handleListClick);
 }
 
-async function handleListClick(event) {
+async function handleListClick(event) { // async, await를 이해하기 위해선 --lib 옵션이 필요하다.
   let selectedId;
   if (
     event.target instanceof HTMLParagraphElement ||
