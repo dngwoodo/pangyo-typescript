@@ -37,14 +37,19 @@ let isDeathLoading = false;
 let isRecoveredLoading = false;
 
 // api
-
 function fetchCovidSummary() {
   const url = 'https://api.covid19api.com/summary';
   return axios.get(url);
 }
 
-function fetchCountryInfo(countryCode:any, status:any) {
-  // params: confirmed, recovered, deaths
+enum CovidStatus {
+  Confirmed = 'confirmed',
+  Recovered = 'recovered',
+  Deaths = 'deaths'
+}
+
+function fetchCountryInfo(countryCode:string, status: CovidStatus) {
+  // params: confirmed, recovered, deaths <- status는 애들로 고정되어 있음. postman 참고. 그래서 이넘을 활용함.
   const url = `https://api.covid19api.com/country/${countryCode}/status/${status}`;
   return axios.get(url);
 }
