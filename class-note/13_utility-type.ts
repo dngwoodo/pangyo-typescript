@@ -45,3 +45,47 @@ type ShoppingItem2 = Omit<Product, 'brand' | 'stock'>
 type UpdateProduct = Partial<Product>
 
 function updateProductItem(productItem: UpdateProduct){}
+
+// 4. 유틸리티 타입 구현하기 - Partial
+interface UserProfile {
+    username: string;
+    email: string;
+    profilePhotoUrl: string;
+}
+
+// #1
+// interface UserProfileUpdate{
+//     username?: string;
+//     email?: string;
+//     profilePhotoUrl?: string;
+// }
+
+// #2
+// type UserProfileUpdate = {
+//     username?: UserProfile['username'];
+//     email?: UserProfile['email'];
+//     profilePhotoUrl?: UserProfile['profilePhotoUrl'];
+// }
+
+// #3
+// type UserProfileUpdate = {
+//     // in은 반복문을 의미한다. 용어는 mapped type이라고 부른다.
+//     [p in 'username' | 'email' | 'profilePhotoUrl'] ?: UserProfile[p]
+// }
+
+// #4
+// type UserProfileKeys = keyof UserProfile // "username" | "email" | "profilePhotoUrl"
+// type UserProfileUpdate = {
+//     // in은 반복문을 의미한다. 용어는 mapped type이라고 부른다.
+//     [p in UserProfileKeys] ?: UserProfile[p] // index signature
+// }
+
+// #5 실제 Partial 구현
+type Subset<T> = {
+    [p in keyof T]?: T[p]
+}
+
+// Partial에 들어가보면 이렇게 생겼음.
+// type Partial<T> = {
+//     [p in keyof T]?: T[p]
+// }
