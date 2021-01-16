@@ -1,9 +1,9 @@
 // utils
-function $(selector: any) {
+function $(selector: string) {
   return document.querySelector(selector);
 }
-function getUnixTimestamp(date: any) {
-  return new Date(date).getTime();
+function getUnixTimestamp(date: Date | string | number) { // 사람마다 틀리긴 하지만 구체적으로 적는게 좋아보임.
+  return new Date(date).getTime(); // cursor올려보면 string | number | Date 라고 되어있음.
 }
 
 // DOM
@@ -17,7 +17,7 @@ const recoveredList = $('.recovered-list');
 const deathSpinner = createSpinnerElement('deaths-spinner');
 const recoveredSpinner = createSpinnerElement('recovered-spinner');
 
-function createSpinnerElement(id: any) {
+function createSpinnerElement(id: string) {
   const wrapperDiv = document.createElement('div');
   wrapperDiv.setAttribute('id', id);
   wrapperDiv.setAttribute(
