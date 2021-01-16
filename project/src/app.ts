@@ -37,6 +37,7 @@ let isDeathLoading = false;
 let isRecoveredLoading = false;
 
 // api
+
 function fetchCovidSummary() {
   const url = 'https://api.covid19api.com/summary';
   return axios.get(url);
