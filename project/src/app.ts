@@ -7,8 +7,9 @@ function getUnixTimestamp(date: Date | string | number) { // 사람마다 틀리
 }
 
 // DOM
+var a: Element | HTMLElement | HTMLParagraphElement // 순서대로 상위 엘러먼트임.
 const confirmedTotal = $('.confirmed-total');
-const deathsTotal = $('.deaths');
+const deathsTotal: HTMLParagraphElement = $('.deaths'); // 오류가 남.
 const recoveredTotal = $('.recovered');
 const lastUpdatedTime = $('.last-updated-time');
 const rankList = $('.rank-list');
@@ -150,7 +151,7 @@ function clearRecoveredList() {
 }
 
 function setTotalRecoveredByCountry(data: any) {
-  recoveredTotal.innerText = data[0].Cases;
+  recoveredTotal.innerText = data[0].Cases; // recoveredTotal가 Element이기 때문에 innerText에서 에러가 난다.
 }
 
 function startLoadingAnimation() {
