@@ -1,5 +1,5 @@
-import axios from 'axios';
-import Chart from 'chart.js';
+import axios from 'axios'; // 해당 라이브러리 안에 index.d.ts가 존재함.
+import Chart from 'chart.js'; // @types/chat.js/index.d.ts를 불러옴. 대부분의 라이브러리가 이렇게 작동함.
 
 // utils
 function $(selector: string) {
