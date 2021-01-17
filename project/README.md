@@ -27,3 +27,6 @@
 3. 프로젝트 환경 구성
     - babel, eslint, prettier 등의 환경 설정
 4. 외부 라이브러리 모듈화
+    - https://github.com/DefinitelyTyped/DefinitelyTyped
+    - https://www.typescriptlang.org/dt/search?search=
+    - https://www.typescriptlang.org/docs/handbook/module-resolution.html
