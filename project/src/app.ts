@@ -1,5 +1,7 @@
 import axios from 'axios'; // 해당 라이브러리 안에 index.d.ts가 존재함.
-import Chart from 'chart.js'; // @types/chat.js/index.d.ts를 불러옴. 대부분의 라이브러리가 이렇게 작동함.
+
+// https://stackoverflow.com/questions/56238356/understanding-esmoduleinterop-in-tsconfig-file <- 외부라이브러리에 * as 를 사용하 이유
+import * as Chart from 'chart.js'; // @types/chat.js/index.d.ts를 불러옴. 대부분의 라이브러리가 이렇게 사용됨.
 
 // utils
 function $(selector: string) {
