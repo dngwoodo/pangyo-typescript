@@ -67,9 +67,10 @@ node_modules
   "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
   },
-  "eslint.alwaysShowStatus": true,
+  "eslint.alwaysShowStatus": true, // 에러 표시 하는 옵션
   "eslint.workingDirectories": [
-      {"mode": "auto"}
+      // https://rat2.tistory.com/40 참고
+      {"mode": "auto"} // package.json, .eslintignore 그리고 .eslintrc* 파일이 위치한 폴더를 working directory로 지정한다. 
   ],
   "eslint.validate": [
       "javascript",

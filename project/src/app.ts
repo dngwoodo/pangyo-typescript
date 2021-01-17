@@ -7,8 +7,8 @@ function getUnixTimestamp(date: Date | string | number) {
   return new Date(date).getTime(); // cursor올려보면 string | number | Date 라고 되어있음.
 }
 
-// DOM
-let a: Element | HTMLElement | HTMLParagraphElement; // 순서대로 상위 엘러먼트임.
+// // DOM
+// let a: Element | HTMLElement | HTMLParagraphElement; // 순서대로 상위 엘러먼트임.
 // $의 반환값이 Element이기 떄문에 변수에 타입을 HTMLSpanElement로 해주면 에러가 뜸. 이유는 Element에 HTMLSpanElement보다 가진 타입이 적기 때문임.
 const confirmedTotal = $('.confirmed-total') as HTMLSpanElement; // 그래서 type assertion을 이용하여 타입을 정해줌.
 const deathsTotal = $('.deaths') as HTMLParagraphElement; // 그래서 type assertion을 이용하여 타입을 정해줌.
