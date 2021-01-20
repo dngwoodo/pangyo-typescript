@@ -3,7 +3,11 @@ import axios, { AxiosResponse } from 'axios'; // 해당 라이브러리 안에 i
 
 // // https://stackoverflow.com/questions/56238356/understanding-esmoduleinterop-in-tsconfig-file <- 외부라이브러리에 * as 를 사용하 이유
 import * as Chart from 'chart.js'; // @types/chat.js/index.d.ts를 불러옴. 대부분의 라이브러리가 이렇게 사용됨.
-import { CountrySummaryResponse, CovidSummaryResponse } from './covid/index';
+import {
+  Country,
+  CountrySummaryResponse,
+  CovidSummaryResponse,
+} from './covid/index';
 
 // utils
 function $(selector: string) {
@@ -223,9 +227,9 @@ function setChartData(data: any) {
 function setTotalConfirmedNumber(data: CovidSummaryResponse) {
   // 이제 data만 치면 안에 있는 메서드를 자동완성할 수 있음.
   confirmedTotal.innerText = data.Countries.reduce(
-    (total: any, current: any) => (total += current.TotalConfirmed),
+    (total: number, current: Country) => (total += current.TotalConfirmed),
     0
-  );
+  ).toString();
 }
 
 function setTotalDeathsByWorld(data: any) {
