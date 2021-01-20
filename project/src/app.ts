@@ -1,7 +1,9 @@
+// import들은 app.js로 빌드된 후에 에러가 나므로 데이터를 받아오기 위해서는 import는 잠시 주석처리 필요
 import axios, { AxiosResponse } from 'axios'; // 해당 라이브러리 안에 index.d.ts가 존재함.
 
 // // https://stackoverflow.com/questions/56238356/understanding-esmoduleinterop-in-tsconfig-file <- 외부라이브러리에 * as 를 사용하 이유
 import * as Chart from 'chart.js'; // @types/chat.js/index.d.ts를 불러옴. 대부분의 라이브러리가 이렇게 사용됨.
+import { CovidSummaryResponse } from './covid/index';
 
 // utils
 function $(selector: string) {
@@ -43,13 +45,6 @@ function createSpinnerElement(id: string) {
 // state
 let isDeathLoading = false;
 const isRecoveredLoading = false;
-
-interface CovidSummaryResponse {
-  Countries: any[];
-  Date: string;
-  Global: any; // object는 넣으면 에러가 나서 우선 any 대입
-  Message: string;
-}
 
 // api
 function fetchCovidSummary(): Promise<AxiosResponse<CovidSummaryResponse>> {
