@@ -85,10 +85,16 @@ function startApp() {
 
 // events
 function initEvents() {
+  if (!rankList) {
+    // ranList가 null일 떄를 방지
+    return;
+  }
+  // rankList가 null이 될 수 도 있고 strictFunctionTypes: true 때문에 에러가 남.
   rankList.addEventListener('click', handleListClick);
 }
 
-async function handleListClick(event: MouseEvent) {
+async function handleListClick(event: Event) {
+  // strictFunctionTypes를 방지, event:MouseEvent -> event: Event
   // async, await를 이해하기 위해선 --lib 옵션이 필요하다.
   let selectedId;
   if (
