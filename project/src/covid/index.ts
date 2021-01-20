@@ -30,10 +30,10 @@ export interface CovidSummaryResponse {
 
 interface CountrySummaryInfo {
   Cases: number;
-  City: '';
-  CityCode: '';
-  Country: 'Spain';
-  CountryCode: 'ES';
+  City: string;
+  CityCode: string;
+  Country: string;
+  CountryCode: string;
   Date: string;
   Lat: string;
   Lon: string;
