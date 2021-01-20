@@ -1,6 +1,6 @@
-import axios from 'axios'; // 해당 라이브러리 안에 index.d.ts가 존재함.
+import axios, { AxiosResponse } from 'axios'; // 해당 라이브러리 안에 index.d.ts가 존재함.
 
-// https://stackoverflow.com/questions/56238356/understanding-esmoduleinterop-in-tsconfig-file <- 외부라이브러리에 * as 를 사용하 이유
+// // https://stackoverflow.com/questions/56238356/understanding-esmoduleinterop-in-tsconfig-file <- 외부라이브러리에 * as 를 사용하 이유
 import * as Chart from 'chart.js'; // @types/chat.js/index.d.ts를 불러옴. 대부분의 라이브러리가 이렇게 사용됨.
 
 // utils
@@ -44,8 +44,15 @@ function createSpinnerElement(id: string) {
 let isDeathLoading = false;
 const isRecoveredLoading = false;
 
+interface CovidSummaryResponse {
+  Countries: any[];
+  Date: string;
+  Global: any; // object는 넣으면 에러가 나서 우선 any 대입
+  Message: string;
+}
+
 // api
-function fetchCovidSummary() {
+function fetchCovidSummary(): Promise<AxiosResponse<CovidSummaryResponse>> {
   const url = 'https://api.covid19api.com/summary';
   return axios.get(url);
 }
