@@ -3,7 +3,7 @@ import axios, { AxiosResponse } from 'axios'; // 해당 라이브러리 안에 i
 
 // // https://stackoverflow.com/questions/56238356/understanding-esmoduleinterop-in-tsconfig-file <- 외부라이브러리에 * as 를 사용하 이유
 import * as Chart from 'chart.js'; // @types/chat.js/index.d.ts를 불러옴. 대부분의 라이브러리가 이렇게 사용됨.
-import { CovidSummaryResponse } from './covid/index';
+import { CountrySummaryResponse, CovidSummaryResponse } from './covid/index';
 
 // utils
 function $(selector: string) {
@@ -58,7 +58,10 @@ enum CovidStatus {
   Deaths = 'deaths',
 }
 
-function fetchCountryInfo(countryCode: string, status: CovidStatus) {
+function fetchCountryInfo(
+  countryCode: string,
+  status: CovidStatus
+): Promise<AxiosResponse<CountrySummaryResponse>> {
   // params: confirmed, recovered, deaths <- status는 애들로 고정되어 있음. postman 참고. 그래서 이넘을 활용함.
   const url = `https://api.covid19api.com/country/${countryCode}/status/${status}`;
   return axios.get(url);

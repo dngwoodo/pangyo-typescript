@@ -27,3 +27,18 @@ export interface CovidSummaryResponse {
   Global: Global; // object는 넣으면 에러가 나서 우선 any 대입
   Message: string;
 }
+
+interface CountrySummaryInfo {
+  Cases: number;
+  City: '';
+  CityCode: '';
+  Country: 'Spain';
+  CountryCode: 'ES';
+  Date: string;
+  Lat: string;
+  Lon: string;
+  Province: string;
+  Status: string;
+}
+
+export type CountrySummaryResponse = CountrySummaryInfo[];
