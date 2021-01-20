@@ -54,6 +54,12 @@ const isRecoveredLoading = false;
 // api
 function fetchCovidSummary(): Promise<AxiosResponse<CovidSummaryResponse>> {
   const url = 'https://api.covid19api.com/summary';
+  // axios.get 타입에 대해서 궁금해서 제네릭을 사용한 예제를 만듬.
+  // function a<T, R>(a: T, b: R) {
+  //   return a;
+  // }
+
+  // a<string, number>('a', 3);
   return axios.get(url);
 }
 
