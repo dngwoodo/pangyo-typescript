@@ -69,7 +69,7 @@ enum CovidStatus {
 }
 
 function fetchCountryInfo(
-  countryName: string,
+  countryName: string | undefined,
   status: CovidStatus
 ): Promise<AxiosResponse<CountrySummaryResponse>> {
   // params: confirmed, recovered, deaths <- status는 애들로 고정되어 있음. postman 참고. 그래서 이넘을 활용함.
@@ -101,7 +101,7 @@ async function handleListClick(event: Event) {
     event.target instanceof HTMLParagraphElement ||
     event.target instanceof HTMLSpanElement
   ) {
-    selectedId = event.target.parentElement.id;
+    selectedId = event.target.parentElement?.id;
   }
   if (event.target instanceof HTMLLIElement) {
     selectedId = event.target.id;
