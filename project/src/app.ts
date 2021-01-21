@@ -26,9 +26,9 @@ const confirmedTotal = $('.confirmed-total') as HTMLSpanElement; // 그래서 ty
 const deathsTotal = $('.deaths') as HTMLParagraphElement; // 그래서 type assertion을 이용하여 타입을 정해줌.
 const recoveredTotal = $('.recovered') as HTMLParagraphElement; // 그래서 type assertion을 이용하여 타입을 정해줌.
 const lastUpdatedTime = $('.last-updated-time') as HTMLParagraphElement; // 그래서 type assertion을 이용하여 타입을 정해줌.
-const rankList = $('.rank-list');
-const deathsList = $('.deaths-list');
-const recoveredList = $('.recovered-list');
+const rankList = $('.rank-list') as HTMLOListElement;
+const deathsList = $('.deaths-list') as HTMLOListElement;
+const recoveredList = $('.recovered-list') as HTMLOListElement;
 const deathSpinner = createSpinnerElement('deaths-spinner');
 const recoveredSpinner = createSpinnerElement('recovered-spinner');
 
@@ -180,12 +180,12 @@ function setRecoveredList(data: CountrySummaryResponse) {
     p.textContent = new Date(value.Date).toLocaleDateString().slice(0, -1);
     li.appendChild(span);
     li.appendChild(p);
-    recoveredList.appendChild(li);
+    recoveredList?.appendChild(li); // recoveredList 가 존재하면 실행됨. 옵셔널 체이닝이라고 부름. 애도 근데 위에서 as HTMLOListElement 이렇게 해주면 해줄필요없음.
   });
 }
 
 function clearRecoveredList() {
-  recoveredList.innerHTML = null;
+  recoveredList.innerHTML = '';
 }
 
 function setTotalRecoveredByCountry(data: CountrySummaryResponse) {
