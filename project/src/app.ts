@@ -154,7 +154,11 @@ function setDeathsList(data: CountrySummaryResponse) {
 }
 
 function clearDeathList() {
-  deathsList.innerHTML = null;
+  // 원래는 deathsList를 정의할때 위에서 as HTMLParagraphElement 이런것처럼 해주면 에러가 나지 않음.
+  if (!deathsList) {
+    return;
+  }
+  deathsList.innerHTML = '';
 }
 
 function setTotalDeathsByCountry(data: CountrySummaryResponse) {
