@@ -11,8 +11,10 @@ import {
 } from './covid/index';
 
 // utils
-function $(selector: string) {
-  return document.querySelector(selector);
+// extends를 이용하여 HTMLElement를 상속 받은애만 T에 들어올 수 있게 해두었다. string, number 등 다른 타입은 들어올 수 없다!
+function $<T extends HTMLElement = HTMLDivElement>(selector: string) {
+  const element = document.querySelector(selector);
+  return element as T;
 }
 function getUnixTimestamp(date: Date | string | number) {
   // 사람마다 틀리긴 하지만 구체적으로 적는게 좋아보임.
@@ -22,7 +24,8 @@ function getUnixTimestamp(date: Date | string | number) {
 // // DOM
 // let a: Element | HTMLElement | HTMLParagraphElement; // 순서대로 상위 엘러먼트임.
 // $의 반환값이 Element이기 떄문에 변수에 타입을 HTMLSpanElement로 해주면 에러가 뜸. 이유는 Element에 HTMLSpanElement보다 가진 타입이 적기 때문임.
-const confirmedTotal = $('.confirmed-total') as HTMLSpanElement; // 그래서 type assertion을 이용하여 타입을 정해줌.
+// const temp = $('.abc'); // const temp: HTMLDivElement로 뜨게 된다.
+const confirmedTotal = <HTMLSpanElement>$('.confirmed-total'); // 그래서 type assertion을 이용하여 타입을 정해줌.
 const deathsTotal = $('.deaths') as HTMLParagraphElement; // 그래서 type assertion을 이용하여 타입을 정해줌.
 const recoveredTotal = $('.recovered') as HTMLParagraphElement; // 그래서 type assertion을 이용하여 타입을 정해줌.
 const lastUpdatedTime = $('.last-updated-time') as HTMLParagraphElement; // 그래서 type assertion을 이용하여 타입을 정해줌.
